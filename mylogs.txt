@@ -1,0 +1,5 @@
+select *
+from logger_logs
+where user_name = 'USER_NAME'
+order by id desc;
+/
