@@ -1,3 +1,3 @@
 select *
 from logger_logs_5_min
-order by id desc
+order by id desc;
