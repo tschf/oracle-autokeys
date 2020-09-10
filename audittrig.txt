@@ -1,0 +1,13 @@
+create or replace trigger todo_biu
+before update on todo
+for each row
+begin
+    :NEW.MOD_USER :=
+        coalesce(
+            sys_context('APEX$SESSION','app_user'),
+            regexp_substr(sys_context('userenv','client_identifier'),'^[^:]*'),
+            sys_context('userenv','session_user')
+        );
+    :NEW.MOD_DATE := SYSDATE;
+end todo_biu;
+/
