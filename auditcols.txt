@@ -1,0 +1,9 @@
+cre_date date default sysdate not null,
+cre_user varchar2(255)
+    default
+        coalesce(
+            sys_context('APEX$SESSION','app_user'),
+            regexp_substr(sys_context('userenv','client_identifier'),'^[^:]*'),
+            sys_context('userenv','session_user')
+        ),
+mod_date date
